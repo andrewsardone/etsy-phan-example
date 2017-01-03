@@ -75,3 +75,26 @@ case is sometimes I want to analyze my entire codebase, but other times I only
 want to analyze a few files (e.g., for speed, or after some edits, etc.).
 
 [etsy/phan]: https://github.com/etsy/phan
+
+## Issue with speed
+
+This is a pretty minimal project, and analyzing the codebase takes close to 7
+seconds:
+
+```
+❯ time ./vendor/bin/phan --directory ./src --directory ./vendor --exclude-directory-list ./vendor
+./src/B.php:12 PhanNoopProperty Unused property
+./vendor/bin/phan --directory ./src --directory ./vendor  ./vendor  6.62s user 0.37s system 98% cpu 7.083 total
+```
+
+When using the `--processes` argument to try to speed things up by using more
+CPU cores, it's slower :-/
+
+```
+❯ time ./vendor/bin/phan --directory ./src --directory ./vendor --exclude-directory-list ./vendor --processes 4
+./src/B.php:12 PhanNoopProperty Unused property
+./vendor/bin/phan --directory ./src --directory ./vendor  ./vendor --processe  7.29s user 1.24s system 106% cpu 7.979 total
+```
+
+These tests were ran on a MacBook Pro (Retina, 15-inch, Mid 2015), 2.2 GHz
+Intel Core i7, 16 GB RAM.
