@@ -1,2 +1,6 @@
 # OS X
 .DS_Store
+
+# composer
+composer.phar
+/vendor/

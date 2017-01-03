@@ -1,0 +1,15 @@
+{
+    "name": "andrewsardone/etsy-phan-example",
+    "type": "project",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Andrew Sardone",
+            "email": "andrew@andrewsardone.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
+}
